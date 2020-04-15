@@ -2,11 +2,11 @@ import React from 'react';
 import Header from './components/Header/Header.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Profile from './components/Profile/Profile.jsx';
-import Dialogs from './components/Dialogs/Dialogs.jsx';
 import {Route, BrowserRouter} from 'react-router-dom';
 import News from './components/News/News.jsx';
 import Music from './components/Music/Music.jsx';
 import Settings from './components/Settings/Settings.jsx';
+import DialogsContainer from './components/Dialogs/DialogsContainer.js';
 
 const App = (props) => {
     return (
@@ -16,13 +16,9 @@ const App = (props) => {
             <Navbar />
             <div className='app-wrapper-content'>
                 <Route path="/dialogs"
-                    render={()=> <Dialogs store={props.store} />} />
+                    render={()=> <DialogsContainer store={props.store} />} />
                 <Route path="/profile" 
-                    render={()=> <Profile 
-                        profilePage={props.state.profilePage} 
-                        dispatch={props.dispatch}
-                        newPostText={props.state.profilePage.newPostText}/>} 
-                        />
+                    render={()=> <Profile store={props.store} />} />
                 <Route path="/news" component={News} />
                 <Route path="/music" component={Music} />
                 <Route path="/settings" component={Settings} />
