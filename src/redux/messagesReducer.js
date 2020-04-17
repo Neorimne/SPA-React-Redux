@@ -12,25 +12,27 @@ let initialState = {
         { id: 2, message: "wazzup" },
         { id: 3, message: "I gotta React" }
     ],
-    newMessageBody: ''
+    newMessageBody: 'test'
 }
 
 const messagesReducer = (state = initialState, action) => {
-    
-    switch(action.type) {
+    switch (action.type) {
         case UDTATE_NEW_MESSAGE_BODY:
-            state.newMessageBody = action.messageBody;
-            return state;
+            return {
+                ...state,
+                newMessageBody: action.messageBody
+            }
         case SEND_MESSAGE:
             let body = state.newMessageBody;
-            state.newMessageBody = '';
-            state.messageData.push({id: 6, message: body});
-            return state;
+            return {
+                ...state,
+                newMessageBody: '',
+                messageData: [...state.messageData, { id: 7, message: body }]
+            }
         default:
             return state;
     }
 }
-
 
 export const updateNewMessageBodyCreator = (messageBody) => {
     return {
