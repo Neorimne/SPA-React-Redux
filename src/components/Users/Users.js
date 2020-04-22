@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './users.module.css';
+import { NavLink } from 'react-router-dom';
 
 
 let Users = (props) => {
@@ -24,8 +25,10 @@ let Users = (props) => {
                 props.users.map(u => <div key={u.id}>
                     <span>
                         <div>
-                            <img src="https://manchestertriathlonclub.org.uk/wp-content/uploads/2016/09/8016-200-copy.png"
-                                width="120px" alt="img" />
+                            <NavLink to={'/profile/' + u.id}>
+                                <img src="https://manchestertriathlonclub.org.uk/wp-content/uploads/2016/09/8016-200-copy.png"
+                                    width="120px" alt="img" />
+                            </NavLink>
                         </div>
                         <div>
                             {u.followed
